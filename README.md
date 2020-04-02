@@ -1,5 +1,9 @@
+# Note: 
+This is an **offline branch**. Script uses downloaded webpage for scraping and outputs old stats as of **31 March 2020** about covid19.
+This only for demo purpose.
+
 # Description
-This project allows to fetch covid19 stats including different affected countries. [*Click for live preview*](http://#)
+This project allows to fetch covid19 stats including different affected countries. 
 
 # Installation
 Project requires python3
