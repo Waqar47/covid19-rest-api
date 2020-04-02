@@ -17,4 +17,7 @@ Project requires python3
    * <b>Such as</b> <code>localhost/api/v1/country/pakistan</code>
  
  * View all countries stats: <code>localhost/</code>
+ 
+ # Screenshot(s)
+ ![Index view flask server](screenshots/index.JPG)
 
