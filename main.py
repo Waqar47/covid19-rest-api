@@ -3,10 +3,10 @@ import requests
 
 
 def get_json_covid():
-    #response = requests.get('https://www.worldometers.info/coronavirus/')
+    response = requests.get('https://www.worldometers.info/coronavirus/')
     
-    
-    soup = BeautifulSoup(open('out.html',encoding="utf-8"))
+    soup = BeautifulSoup(response.text)
+    #soup = BeautifulSoup(open('out.html',encoding="utf-8"))
     
     
     table = soup.find_all(id='main_table_countries_today')[0]
