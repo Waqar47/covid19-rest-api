@@ -4,6 +4,7 @@ import main
 from main import *
 
 
+
 if __name__ == '__main__':
     
     app = flask.Flask(__name__)
@@ -11,29 +12,50 @@ if __name__ == '__main__':
     
     json = get_json_covid()
     records = json
+
     @app.route('/', methods=['GET'])
     def home():    
         return jsonify(json)
     
-    @app.route('/api/v1/', methods=['GET'])
-    def info_by_country():
+    @app.route('/api/v1/country/<name>', methods=['GET'])
+    def info_by_country(name):
+        name = name.lower()
+
+        if len(name) == 0:
         
-        country = ''
-        if 'country' in request.args:
-            country = str(request.args['country'])
-            
-        else:
-            return "Error: No country field provided. Please specify a country."
+            return "Error: No country found"
     
 
-        results = []
+        results = [record for record in records if record['country'].lower() == name]
 
-        for record in records:
-            if record['country'].lower() == country.lower():
-                results.append(record)
         
         
-        return jsonify(results)    
+        return jsonify(results)
+
+    @app.route('/api/v1/country/<name>/<query>', methods=['GET'])
+    def country_specific_query(name,query):
+        
+        name = name.lower()
+        if len(name) == 0:
+        
+            return "Error: No country found"
+    
+
+        results = [record for record in records if record['country'].lower() == name]
+
+        if len(results) > 0:
+            try:
+                result = results[0][query]
+            except KeyError:
+                return "Error: Invalid query"
+        else:
+            return "Error: No country found"
+
+       
+        
+        return jsonify({query:result})
+
+    
     app.run()
     
     

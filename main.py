@@ -5,7 +5,7 @@ import requests
 def get_json_covid():
     response = requests.get('https://www.worldometers.info/coronavirus/')
     
-    soup = BeautifulSoup(response.text)
+    soup = BeautifulSoup(response.text,'html.parser')
     #soup = BeautifulSoup(open('out.html',encoding="utf-8"))
     
     
@@ -39,7 +39,7 @@ def get_json_covid():
         'serious_critical':td[7].text.strip(),
         'total_cases_per_million':td[8].text.strip(),
         'total_deaths_per_million':td[9].text.strip(),
-        'reported_first_case':td[10].text.strip()
+        'total_tests':td[10].text.strip()
         
         }
         
