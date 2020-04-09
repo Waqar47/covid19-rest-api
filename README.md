@@ -1,3 +1,6 @@
+<p>⚠️<b>WARNING:</b> Project uses development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.</p>
+
 # Description
 This project allows to fetch covid19 stats including different affected countries. [*Click for live preview*](http://#)
 
